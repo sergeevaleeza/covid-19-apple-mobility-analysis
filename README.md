@@ -11,7 +11,7 @@ Data is available for [download](https://covid19.apple.com/mobility)
 
 ### Log
 
-* On 2020-09-14, git repository was created.
+* On 2020-09-14, git repository was created for the project and commit all files into that repository.
 
 * On 2020-09-14, a new version of data was downloaded for analysis. Create function to get any state subset data and save it naming with original larg data set name followed by state name. Archived old code. 
 
