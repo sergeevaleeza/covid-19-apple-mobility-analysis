@@ -11,6 +11,9 @@ Data is available for [download](https://covid19.apple.com/mobility)
 
 ### Log
 
-* On 2020-08-30, data was downloaded originally for analysis and created silmple code to look up subset data of California and Texas states and export that data as separate .csv files.
+* On 2020-09-14, git repository was created.
 
 * On 2020-09-14, a new version of data was downloaded for analysis. Create function to get any state subset data and save it naming with original larg data set name followed by state name. Archived old code. 
+
+* On 2020-08-30, data was downloaded originally for analysis and created silmple code to look up subset data of California and Texas states and export that data as separate .csv files.
+
