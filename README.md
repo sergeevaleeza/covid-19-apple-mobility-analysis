@@ -10,6 +10,8 @@ Data is available for [download](https://covid19.apple.com/mobility)
 
 
 ### Log
+* On 2020-09-20, original 01_get_subset_data_for_state.R and 02_get_count_counties_and_citis_traffic.R were archived. New code with implemented For Loops was added to those funcitons to iterate for a provided list of 10 states. I choose top 10 states by population in this order: "California", "Texas", "Florida", "New York", "Pennsylvania", "Illinois", "Ohio", "Georgia", "North Carolina", and "Michigan" according to [World Population Review website](https://worldpopulationreview.com/states).
+
 * On 2020-09-20, script was turned into a function with new call script in code folder, which takes input file (based on previous code to get state_mobility_data), and puts out in output folder name of the original file + _cities_and_counties_count.csv file
 
 * On 2020-09-20, a new version of data was downloaded for analysis. Installed "dplyr" package. Wrote script to analyze data from previous script based on state's city and county mobility data.
