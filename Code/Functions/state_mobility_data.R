@@ -26,6 +26,7 @@ state_mobility_data <- function(input_file_name, state) {
                                       tools::file_path_sans_ext(
                                         basename(input_file_name)),
                                       "_",
-                                      state,
+                                      gsub(pattern = " ",
+                                           replacement = "_", state),
                                       ".csv"))
 }
