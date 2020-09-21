@@ -10,6 +10,8 @@ Data is available for [download](https://covid19.apple.com/mobility)
 
 
 ### Log
+* On 2020-09-20, script was turned into a function with new call script in code folder, which takes input file (based on previous code to get state_mobility_data), and puts out in output folder name of the original file + _cities_and_counties_count.csv file
+
 * On 2020-09-20, a new version of data was downloaded for analysis. Installed "dplyr" package. Wrote script to analyze data from previous script based on state's city and county mobility data.
 
 * On 2020-09-14, git repository was created for the project and commit all files into that repository.
