@@ -21,7 +21,7 @@ states_list_of_ten <- list("California", "Texas", "Florida", "New York",
 for (state_to_choose in gsub(pattern = " ", replacement = "_",
                              states_list_of_ten)) {
     city_county_mobility_data(
-    input_state_file = paste0("Output/applemobilitytrends-2020-09-18_",
+    input_state_file = paste0("Output/applemobilitytrends-2020-09-20_",
                               state_to_choose, ".csv")
   )
 }

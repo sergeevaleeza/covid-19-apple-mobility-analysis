@@ -10,6 +10,8 @@ Data is available for [download](https://covid19.apple.com/mobility)
 
 
 ### Log
+* On 2020-09-21, 03_ old code was turned into a function and old version was archived. All function calls were updated with new latest covid data. All new .csv filed for 2020-09-20 were created for long pivot data, and previously used top 10 states.
+
 * On 2020-09-21, new covid data was downloaded, new code was written using libraries: readr, tidyr, and dplyr to convert columns containing day dates into one column named date, renaming new file with original name of the file followed by _long.csv
 
 * On 2020-09-20, original 01_get_subset_data_for_state.R and 02_get_count_counties_and_citis_traffic.R were archived. New code with implemented For Loops was added to those funcitons to iterate for a provided list of 10 states. I choose top 10 states by population in this order: "California", "Texas", "Florida", "New York", "Pennsylvania", "Illinois", "Ohio", "Georgia", "North Carolina", and "Michigan" according to [World Population Review website](https://worldpopulationreview.com/states). Fixed naming issue with space being in the saved file. fixed with gsub function.
