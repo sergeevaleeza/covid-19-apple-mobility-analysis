@@ -11,22 +11,22 @@
 state_mobility_data <- function(input_file_name, state) {
 
   # read in full .csv data
-  raw_covid_data <- read.csv(input_file_name)
+  raw_covid_data <- readr::read_csv(input_file_name, col_names = TRUE)
 
   # select rows where sub.region column has selected state
-  state_data <- raw_covid_data[raw_covid_data$sub.region == state, ]
+  state_data <- raw_covid_data %>%
+    dplyr::filter(`sub-region` == state)
 
-  #check if the input state is actually in the raw data
-  if (nrow(state_data) == 0) {
-    stop("ERROR: No matches found. Please check state name.")
-  }
+  state_no_spaces <- gsub(state, pattern = " ", replacement = "_")
 
-  # save Texas data to new csv file in Output directory
-  write.csv(state_data, file = paste0("Output/",
+  # save state  data to new csv file in Output directory
+  readr::write_csv(state_data, paste0("Output/State_Data_Wide/",
                                       tools::file_path_sans_ext(
                                         basename(input_file_name)),
                                       "_",
-                                      gsub(pattern = " ",
-                                           replacement = "_", state),
+                                      state_no_spaces,
                                       ".csv"))
+
+  return(state_data)
+
 }

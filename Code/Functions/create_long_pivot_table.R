@@ -15,17 +15,19 @@ library("dplyr")
 create_long_pivot_table <- function(input_file_name) {
 
   # read in full .csv data
-  raw_covid_data <- read_csv(input_file_name)
+  raw_covid_data <- readr::read_csv(input_file_name, col_names = TRUE)
 
   # Convert data to long format
   all_covid_data_long <- raw_covid_data %>%
     pivot_longer(c(`2020-01-13`:dplyr::last(names(raw_covid_data))),
-                 names_to = "date")
+                 names_to = "date", values_to = "rel_mobility")
 
   # Save new long data to csv
-  write_csv(all_covid_data_long, paste0("Output/",
-                                        tools::file_path_sans_ext(
-                                          basename(input_file_name)),
-                                        "_long.csv")
-  )
+  readr::write_csv(all_covid_data_long, paste0("Output/State_Data_Long/",
+                                               tools::file_path_sans_ext(
+                                                 basename(input_file_name)),
+                                               "_long.csv"))
+
+  return(all_covid_data_long)
+
 }
