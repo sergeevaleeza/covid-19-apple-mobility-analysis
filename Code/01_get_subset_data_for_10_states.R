@@ -21,7 +21,7 @@ states_list_of_ten <- list("California", "Texas", "Florida", "New York",
 # for loop to iterate through list of 10 states.
 for (state_to_choose in states_list_of_ten) {
   state_mobility_data(
-    input_file_name = "Data/Raw/applemobilitytrends-2020-09-20.csv",
+    input_file_name = "Data/Raw/applemobilitytrends-2020-10-03.csv",
     state = state_to_choose
   )
 }
