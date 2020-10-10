@@ -14,7 +14,7 @@ knitr::opts_chunk$set(echo = TRUE, message = TRUE)
 
 ```{r set-parameters}
 # choose the state to manipulate
-state_to_analyze <- "Florida"
+state_to_analyze <- "California"
 
 # sanitizing the name of the state for output files
 state_no_spaces <- gsub(state_to_analyze,
@@ -119,7 +119,7 @@ timeseries_plot <- long_subset %>%
   ggplot(aes(x = lubridate::ymd(date),
              y = mean_mobility)) +
   geom_line() +
-  labs(title = paste("Statewide mean relative mobility driving leevls in",
+  labs(title = paste("Statewide mean relative mobility driving levels in",
                      state_to_analyze,
                      "during COVID"),
        x = "Date",
@@ -133,6 +133,31 @@ ggsave(plot = timeseries_plot,
                          "_timeseries_plot.png"))
 timeseries_plot
 ```
+
+```{r density-mobility-transportation}
+# make a density plot of relative mobility of different transportations types
+# data across the state with the relative mobility on the x axis and
+# density on the y axis
+
+density_plot <- ggplot(data = long_subset %>% group_by(region),
+                       aes(x = rel_mobility)) +
+  #geom_density(aes(mapping = transportation_type)) +
+  geom_density(aes(fill = transportation_type),
+                            position = "stack") +
+  labs(title = paste("Statewide density of mobility in",
+                     state_to_analyze, "during COVID"),
+       x = "Relative Mobility",
+       y = "Density")
+
+ggsave(plot = density_plot,
+       filename = paste0("Output/Figures/",
+                         base_name,
+                         "_",
+                         state_no_spaces,
+                         "_transportation_density_plot.png"))
+density_plot
+```
+
 
 ## Session Info
 
