@@ -1,5 +1,5 @@
 ---
-title: "Analysis"
+title: "Analysis of mobility data during COVID-19 by state"
 author: "Leeza Sergeeva"
 date: "10/4/2020"
 output: html_document

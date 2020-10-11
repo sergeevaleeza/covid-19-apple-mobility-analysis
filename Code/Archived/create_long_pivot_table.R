@@ -15,7 +15,7 @@ library("dplyr")
 create_long_pivot_table <- function(input_file_name) {
 
   # read in full .csv data
-  raw_covid_data <- read_csv(input_file_name)
+  raw_covid_data <- readr::read_csv(input_file_name)
 
   # Convert data to long format
   all_covid_data_long <- raw_covid_data %>%
