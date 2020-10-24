@@ -4,6 +4,9 @@ author: "Leeza Sergeeva"
 date: "10/4/2020"
 output: html_document
 bibliography: references.bib
+params:
+  state: "California"
+  data: "Data/Raw/applemobilitytrends-2020-10-03.csv"
 ---
 
 ```{r setup, include=FALSE}
@@ -14,7 +17,7 @@ knitr::opts_chunk$set(echo = TRUE, message = TRUE)
 
 ```{r set-parameters}
 # choose the state to manipulate
-state_to_analyze <- "California"
+state_to_analyze <- params$state
 
 # sanitizing the name of the state for output files
 state_no_spaces <- gsub(state_to_analyze,
@@ -22,8 +25,7 @@ state_no_spaces <- gsub(state_to_analyze,
                         replacement = "_")
 
 # set global data file name to use
-raw_file_to_process <- "Data/Raw/applemobilitytrends-2020-10-03.csv"
-
+raw_file_to_process <- params$data
 # get base name for the output file without extention
 base_name <- tools::file_path_sans_ext(basename(raw_file_to_process))
 
