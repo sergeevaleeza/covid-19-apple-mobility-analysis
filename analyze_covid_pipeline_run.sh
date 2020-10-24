@@ -19,6 +19,13 @@ then
   exit 1
 fi
 
-Rscript -e "rmarkdown::render('Analysis.Rmd', \
-            params = list(state = '$1', \
-            data = '$2'))"
+state=$1
+state=${sate// /_}
+
+
+Rscript -e "rmarkdown::render('Analysis.Rmd',\
+            params = list(state = '$1',\
+            data = '$2',\
+            output_dir = 'output',\
+            output_file = 'Analysis_$state')"
+            
