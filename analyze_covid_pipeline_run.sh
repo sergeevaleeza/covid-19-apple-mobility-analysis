@@ -20,7 +20,7 @@ then
 fi
 
 state=$1
-state=${sate// /_}
+state=${state// /_}
 
 
 Rscript -e "rmarkdown::render('Analysis.Rmd',\
