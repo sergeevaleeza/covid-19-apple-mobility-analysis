@@ -24,6 +24,6 @@ zgrep -c "^>" $sars
 echo "Here is the list of countries from which sequences were obtained, sorted from largest to smallest: "
 bioawk -c fastx '{ print $comment}' $sars | cut -d '|' -f 3 --output-delimiter='_' |
 awk -- '{for (i = 1; i <= NF; i++) wc[$i] += 1}; END {for (w in wc) print w, wc[w]};' |
-sort -rnk2 > sorted_list_of_countries_sars_seqeuences.txt
+sort -rnk2 > ../Output/sorted_list_of_countries_sars_seqeuences.txt
 
-cat sorted_list_of_countries_sars_seqeuences.txt
+cat ../Output/sorted_list_of_countries_sars_seqeuences.txt
