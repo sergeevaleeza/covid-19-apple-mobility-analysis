@@ -10,6 +10,8 @@ Data is available for [download](https://covid19.apple.com/mobility)
 
 
 ### Log
+* On 2020-11-24, created bash script to analyze sars-cov-2-seq.fastq file on the school server. Script returns total number of sequencing reads in the zipped files, as well as the list of coutries followed by the number of reads were provided in the file, sorted from largest to smallest.
+* On 2020-10-24, new mobilityt data was downloaded from Apple website. New bash script made to make Rdm file more generalized where we can pass two variables into bash command line and get full report generated. First input variable is the name of the US state. The second variable is the path to raw data downloaded from the Apple COVID mobility website as a csv file.
 * On 2020-10-04, new apple mobility data was downloaded. New markdown file created where user can type in name of the state and get mobility data gets processed. First, data is getting subsetted to the chosen state. Then wide state data is pivoted on date, converting it into long table, and saving it as .csv file. Then wide data, is tallied and grouped by type of mobility data contained in state data, result is also saved as .csv file. Using ggplot2, three types of figures are generated and saved. First figure shows grouped bar plot of the tallied data. Second figure is a line plot of relative driving mobility across the state. Third graph shows density of mobility data for different types of transportation in the state. Markdown file is capable to dynamically update, including tables and figures.
 
 
