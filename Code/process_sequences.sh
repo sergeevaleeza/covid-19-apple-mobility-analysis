@@ -22,7 +22,7 @@ zgrep -c "^>" $sars
 # tally up the number of SARS-CoV-2 seqeunces in the dataset from each country
 # and sort this output from largest to smallest
 echo "Here is the list of countries from which sequences were obtained, sorted from largest to smallest: "
-bioawk -c fastx '{ print $comment}' $sars | cut -d '|' -f 3 --output-delimiter='_' |
+bioawk -c fastx '{ print $comment}' $sars | cut -d '|' -f 3 --output-delimiter='_' | sed -E 's/ /_/g' |
 awk -- '{for (i = 1; i <= NF; i++) wc[$i] += 1}; END {for (w in wc) print w, wc[w]};' |
 sort -rnk2 > ../Output/sorted_list_of_countries_sars_seqeuences.txt
 
