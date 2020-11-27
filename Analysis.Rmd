@@ -86,6 +86,7 @@ subset_tally <- city_county_mobility_data(
   )
 ```
 
+
 ## Figures
 
 ```{r plot-tally-data}
@@ -162,22 +163,28 @@ density_plot
 ```
 
 ```{r plot-sequence-data, fig.height=12}
-# read in the count of the sequences by country (2 column)
-seqs_by_country <- readr::read_table(params$seqdata,
+# read in the count of the sequences by country (2 coulumns)
+seqs_by_country_column_prep <- readr::read_table(params$seqdata,
                                      col_names = c("country",
                                                    "count"))
+# separate first column values into two columns
+seqs_by_country <- tidyr::separate(seqs_by_country_column_prep,
+                                   1, c("country", "count"), sep = " ")
+# convert count column to numeric value
+seqs_by_country <- transform(seqs_by_country, count = as.numeric(count))
+
 # check that we have the right number of columns
 stopifnot(ncol(seqs_by_country) == 2)
 
 # make a sideways barplot, log scale x axis, with countries on the y
 # and the counts of sequences on the x, sorted by count
-seq_count_plot <- ggplot(data = seqs_by_county,
+seq_count_plot <- ggplot(data = seqs_by_country,
                          aes(x = count,
-                             y = reorder(country, count))) +
-  scale_x_log10() +
+                             y = reorder(country, count, order = TRUE))) +
   geom_col() +
+  scale_x_log10() +
   labs(title = "Count of SARS_CoV-2 sequences per country",
-       x = "Cout of Sequences",
+       x = "Count of Sequences",
        y = "Country Name")
 
 ggsave(plot = seq_count_plot,

@@ -16,3 +16,10 @@ $(REPORT_PATH): Analysis.Rmd references.bib $(R_FUNCTIONS) $(SEQ_SUMMARY) $(MOBI
 
 $(SEQ_SUMMARY): Code/process_seqeuences.sh $(SEQ_DATA)
 	bash Code/process_sequences.sh "$(SEQ_DATA)" > "$(SEQ_SUMMARY)"
+
+clean:
+	rm -fv Output/*.html
+	rm -fv Analysis.html
+	rm -fv Output/*summary.txt
+	rm -fv Output/*/.csv
+	rm -fv Output/*/.png
