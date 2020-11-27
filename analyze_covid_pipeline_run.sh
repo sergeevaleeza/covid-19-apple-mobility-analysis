@@ -7,10 +7,11 @@ set -euo pipefail
 # This script expects two command line parameters,
 # the first parameter is a US state,
 # the second parameter is raw mobility data to process
-# downloaded from Apple COVID mobility data website.
+# downloaded from Apple COVID mobility data website,
+# and the third paratmeter is the path to seqeunce summary report
 
 # Elizaveta Sergeeva
-# October 24, 2020
+# November 26, 2020
 # esergeeva@usfca.edu
 
 if [ $# -eq 0 ]
@@ -31,4 +32,3 @@ RMD_OUTPUT="output_dir = 'Output', output_file = 'Analysis_$state'"
 
 
 Rscript -e "rmarkdown::render('Analysis.Rmd', $RMD_PARAMS, $RMD_OUTPUT)"
-
