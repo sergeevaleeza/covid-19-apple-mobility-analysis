@@ -27,7 +27,7 @@ if [ $# -eq 1 ];
 then
   # tally up the number of SARS-CoV-2 seqeunces in the dataset from each country
   # and sort this output from largest to smallest
-  bioawk -c fastx '{ print $comment}' $sars | cut -d '|' -f 3 --output-delimiter='_' | sed -E 's/ /_/g' |
+  bioawk -c fastx '{ print $comment}' "$sars" | cut -d '|' -f 3 --output-delimiter='_' | sed -E 's/ /_/g' |
   awk -- '{for (i = 1; i <= NF; i++) wc[$i] += 1}; END {for (w in wc) print w, wc[w]};' |
   sort -rnk2 #> ../Output/sequence_summary.txt
 exit
@@ -36,9 +36,9 @@ fi
 if [ $# -eq 2 ] || [[ $ALL == "ALL" ]];
 then
   echo "Total number of sequences in the file: "
-  echo "$(zcat $sars | bioawk -cfastx 'END{print NR}')"
+  cmd "$(zcat "$sars" | bioawk -cfastx 'END{print NR}')"
   echo "Here is the list of countries from which sequences were obtained, sorted from largest to smallest: "
-  echo "$(bioawk -c fastx '{ print $comment}' $sars | cut -d '|' -f 3 --output-delimiter='_' | sed -E 's/ /_/g' |
+  cmd "$(bioawk -c fastx '{ print $comment}' "$sars" | cut -d '|' -f 3 --output-delimiter='_' | sed -E 's/ /_/g' |
   awk -- '{for (i = 1; i <= NF; i++) wc[$i] += 1}; END {for (w in wc) print w, wc[w]};' |
   sort -rnk2)"
 exit
