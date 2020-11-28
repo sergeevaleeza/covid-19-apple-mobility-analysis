@@ -29,8 +29,8 @@ then
   # and sort this output from largest to smallest
   bioawk -c fastx '{ print $comment}' $sars | cut -d '|' -f 3 --output-delimiter='_' | sed -E 's/ /_/g' |
   awk -- '{for (i = 1; i <= NF; i++) wc[$i] += 1}; END {for (w in wc) print w, wc[w]};' |
-  sort -rnk2
-exit 1
+  sort -rnk2 #> ../Output/sequence_summary.txt
+exit
 fi
 
 if [ $# -eq 2 ] || [[ $ALL == "ALL" ]];

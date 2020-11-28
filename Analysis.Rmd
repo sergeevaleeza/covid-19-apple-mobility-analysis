@@ -7,7 +7,7 @@ bibliography: references.bib
 params:
   state: "California"
   data: "Data/Raw/applemobilitytrends-2020-10-03.csv"
-  seqdata: "Output/sorted_list_of_countries_sars_seqeuences.txt"
+  seqdata: "Output/sequence_summary.txt"
 ---
 
 ```{r setup, include=FALSE}
